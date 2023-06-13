@@ -115,10 +115,20 @@ export const Weather2 = () => {
                         <div className="px-10">Temperature:
                             {checkTempDegree === "C" && (
                                 <span>{weatherDetails.current.temp_c} &deg;C</span>
-                            )}{""}
+                            )}{" "}
                             {checkTempDegree === "F" && (
                                 <span>{weatherDetails.current.temp_f} &deg;F</span>
-                            )}{""}</div>
+                            )}{" "}
+                        </div>
+
+                        <div className="px-10">Feels Like:
+                            {checkTempDegree === "C" && (
+                                <span>{weatherDetails.current.feelslike_c} &deg;C</span>
+                            )}{" "}
+                            {checkTempDegree === "F" && (
+                                <span>{weatherDetails.current.feelslike_f} &deg;F</span>
+                            )}{" "}
+                        </div>
 
                         <div className="px-10">Weather: {weather}</div>
                         <div className="px-10">Precipitation: {
