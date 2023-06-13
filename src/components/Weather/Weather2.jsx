@@ -61,35 +61,36 @@ export const Weather2 = () => {
     return (
         <>
             {/* buttons for interchanging between farenheit and celsius */}
-            <div className="flex justify-end items-center px-4 py-4">
-                <span class="material-symbols-outlined flex justify-start px-5">
-                    thermometer
-                </span>
-                <button className="btn btn-square rounded-none border-black" onClick={() => setTempDegree("F")}> &deg;F</button>
-                <button className="btn btn-square rounded-none border-black" onClick={() => setTempDegree("C")}> &deg;C</button>
-
-                <span class="material-symbols-outlined flex justify-start px-5">
-                    water_drop
-                </span>
-                <button className="btn btn-square rounded-none border-black" onClick={() => setMetric("IN")}> in</button>
-                <button className="btn btn-square rounded-none border-black" onClick={() => setMetric("MM")}> mm</button>
-            </div>
-
-
             {/* Heading with dynamic cityName change*/}
-            <div className="flex justify-start items-center mx-30rem px-10">
-                <p style={{ margin: "1rem 0 0 0 " }}>
-                    <div>
-                        <span className="font-Kanit text-4xl font-semibold">
-                            {weatherDetails.location.name} Weather (Today)
+            <div id="Header">
+                <p className="flex justify-end">
+                    <div className="flex justify-end items-center px-4 py-4">
+                        <span class="material-symbols-outlined flex justify-start px-5">
+                            thermometer
                         </span>
-                    </div>
-                    <div>
-                        <span className="text-2xl font-Kanit">
-                            {weatherDetails.location.region}, {weatherDetails.location.country}
+                        <button className="btn btn-square rounded-none border-black" onClick={() => setTempDegree("F")}> &deg;F</button>
+                        <button className="btn btn-square rounded-none border-black" onClick={() => setTempDegree("C")}> &deg;C</button>
+                        <span class="material-symbols-outlined flex justify-start px-5">
+                            water_drop
                         </span>
+                        <button className="btn btn-square rounded-none border-black" onClick={() => setMetric("IN")}> in</button>
+                        <button className="btn btn-square rounded-none border-black" onClick={() => setMetric("MM")}> mm</button>
                     </div>
                 </p>
+                <div className="flex justify-start items-center mx-30rem px-10">
+                    <p style={{ margin: "1rem 0 0 0 " }}>
+                        <div>
+                            <span className="font-Kanit text-4xl font-semibold">
+                                {weatherDetails.location.name} Weather (Today)
+                            </span>
+                        </div>
+                        <div>
+                            <span className="text-2xl font-Kanit">
+                                {weatherDetails.location.region}, {weatherDetails.location.country}
+                            </span>
+                        </div>
+                    </p>
+                </div>
             </div>
 
             {/*Input box for cityName */}
@@ -107,37 +108,60 @@ export const Weather2 = () => {
 
             <div className="flex justify-center items-center my-10 mx-5 py-5 px-10">
                 {loader ? (<Loader />) : (
-                    <div className="flex justify-center items-center font-Kanit">
-                        {/* <div className="px-10">City: {cityName}</div>
-                        <div className="px-10">Region: {Region}</div> */}
-                        <div className="px-10">Time: {Time}</div>
-                        {/* <div className="px-10">Country: {Country}</div> */}
-                        <div className="px-10">Temperature:
-                            {checkTempDegree === "C" && (
-                                <span>{weatherDetails.current.temp_c} &deg;C</span>
-                            )}{" "}
-                            {checkTempDegree === "F" && (
-                                <span>{weatherDetails.current.temp_f} &deg;F</span>
-                            )}{" "}
+                    <div className="flex text-center font-Kanit">
+                        {/* <div>City: {cityName}</div>
+                        <div>Region: {Region}</div> */}
+                        <div className="px-10">
+                            <div><span class="material-symbols-outlined">
+                                schedule
+                            </span></div>
+                            <div>Time: {Time}</div>
+                        </div>
+                        <div className="px-10">
+                            <div><span class="material-symbols-outlined">
+                                thermostat
+                            </span></div>
+                            <div>Temperature:
+                                {checkTempDegree === "C" && (
+                                    <span>{weatherDetails.current.temp_c} &deg;C</span>
+                                )}{" "}
+                                {checkTempDegree === "F" && (
+                                    <span>{weatherDetails.current.temp_f} &deg;F</span>
+                                )}{" "}
+                            </div>
                         </div>
 
-                        <div className="px-10">Feels Like:
-                            {checkTempDegree === "C" && (
-                                <span>{weatherDetails.current.feelslike_c} &deg;C</span>
-                            )}{" "}
-                            {checkTempDegree === "F" && (
-                                <span>{weatherDetails.current.feelslike_f} &deg;F</span>
-                            )}{" "}
+                        <div className="px-10">
+                            <div><span class="material-symbols-outlined">
+                                face
+                            </span></div><div>Feels Like:
+                                {checkTempDegree === "C" && (
+                                    <span>{weatherDetails.current.feelslike_c} &deg;C</span>
+                                )}{" "}
+                                {checkTempDegree === "F" && (
+                                    <span>{weatherDetails.current.feelslike_f} &deg;F</span>
+                                )}{" "}
+                            </div>
                         </div>
 
-                        <div className="px-10">Weather: {weather}</div>
-                        <div className="px-10">Precipitation: {
-                            checkPrecipMetric === "IN" && (
-                                <span>{weatherDetails.current.precip_in}in</span>
-                            )}{""}
-                            {checkPrecipMetric === "MM" && (
-                                <span>{weatherDetails.current.precip_mm}mm</span>
-                            )}{""}
+                        <div className="px-10">
+                            <div><span class="material-symbols-outlined">
+                                clear_day
+                            </span></div>
+                            <div>Weather: {weather}</div>
+                        </div>
+                        
+                        <div className="px-10">
+                            <div><span class="material-symbols-outlined">
+                                rainy_light
+                            </span></div><div>Precipitation: {
+                                checkPrecipMetric === "IN" && (
+                                    <span>{weatherDetails.current.precip_in}in</span>
+                                )}{""}
+                                {checkPrecipMetric === "MM" && (
+                                    <span>{weatherDetails.current.precip_mm}mm</span>
+                                )}{""}
+                            </div>
                         </div>
                     </div>)}
             </div>
