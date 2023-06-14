@@ -62,9 +62,20 @@ export const Weather2 = () => {
         <>
             {/* buttons for interchanging between farenheit and celsius */}
             {/* Heading with dynamic cityName change*/}
-            <div id="Header">
-                <p className="flex justify-end">
-                    <div className="flex justify-end items-center px-4 py-4">
+            <div id="Header" className="flex justify-between">
+                <div className="flex justify-start items-center px-10">
+                    <p style={{ margin: "1rem 0 0 0 " }}>
+                        <span class="material-symbols-outlined pr-3">
+                            cyclone
+                        </span>
+                        <span className="font-Kanit text-4xl font-semibold">
+                            Weather App
+                        </span>
+                    </p>
+                </div>
+
+                <div className="flex justify-end">
+                    <div className="flex justify-end items-center px-4 py-4 pr-8">
                         <span class="material-symbols-outlined flex justify-start px-5">
                             thermometer
                         </span>
@@ -76,25 +87,26 @@ export const Weather2 = () => {
                         <button className="btn btn-square rounded-none border-black" onClick={() => setMetric("IN")}> in</button>
                         <button className="btn btn-square rounded-none border-black" onClick={() => setMetric("MM")}> mm</button>
                     </div>
-                </p>
-                <div className="flex justify-start items-center mx-30rem px-10">
-                    <p style={{ margin: "1rem 0 0 0 " }}>
-                        <div>
-                            <span className="font-Kanit text-4xl font-semibold">
-                                {weatherDetails.location.name} Weather (Today)
-                            </span>
-                        </div>
-                        <div>
-                            <span className="text-2xl font-Kanit">
-                                {weatherDetails.location.region}, {weatherDetails.location.country}
-                            </span>
-                        </div>
-                    </p>
                 </div>
             </div>
 
+            <div className="flex justify-center items-center px-10">
+                <p style={{ margin: "4rem 0 0 0 " }}>
+                    <div>
+                        <span className="font-Kanit text-4xl font-semibold">
+                            {weatherDetails.location.name} Weather (Today)
+                        </span>
+                    </div>
+                    <div>
+                        <span className="text-2xl font-Kanit">
+                            {weatherDetails.location.region}, {weatherDetails.location.country}
+                        </span>
+                    </div>
+                </p>
+            </div>
+
             {/*Input box for cityName */}
-            <div className="flex justify-start px-10">
+            <div className="flex justify-center px-10 py-4">
                 <Input
                     placeholder="Enter City"
                     className="w-full"
@@ -106,17 +118,20 @@ export const Weather2 = () => {
 
             {error && <ErrorMessage />}
 
-            <div className="flex justify-center items-center my-10 mx-5 py-5 px-10">
+            <div className="flex justify-center items-center my-10">
                 {loader ? (<Loader />) : (
-                    <div className="flex text-center font-Kanit">
-                        {/* <div>City: {cityName}</div>
-                        <div>Region: {Region}</div> */}
+                    <div className="flex justify-between text-center font-Kanit">
+
                         <div className="px-10">
-                            <div><span class="material-symbols-outlined">
-                                schedule
-                            </span></div>
+                            <div>
+                                <span class="material-symbols-outlined">
+                                    schedule
+                                </span>
+                            </div>
                             <div>Time: {Time}</div>
                         </div>
+
+
                         <div className="px-10">
                             <div><span class="material-symbols-outlined">
                                 thermostat
@@ -150,11 +165,12 @@ export const Weather2 = () => {
                             </span></div>
                             <div>Weather: {weather}</div>
                         </div>
-                        
+
                         <div className="px-10">
                             <div><span class="material-symbols-outlined">
                                 rainy_light
-                            </span></div><div>Precipitation: {
+                            </span></div>
+                            <div>Precipitation: {
                                 checkPrecipMetric === "IN" && (
                                     <span>{weatherDetails.current.precip_in}in</span>
                                 )}{""}
@@ -163,6 +179,7 @@ export const Weather2 = () => {
                                 )}{""}
                             </div>
                         </div>
+
                     </div>)}
             </div>
             <div className="flex justify-center items-center my-5">
