@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { getWeatherDetails } from '../../shared/api/WeatherAPI'
 import moment from 'moment/moment';
 import Input from '../../shared/Input';
-import Button from '../../shared/Button';
 import { Loader } from '../Loader/Loader';
 import { ErrorMessage } from '../../shared/ErrorMessage';
+import { Credits } from '../../shared/Credits';
 
 export const Weather2 = () => {
 
@@ -62,13 +62,14 @@ export const Weather2 = () => {
         <>
             {/* buttons for interchanging between farenheit and celsius */}
             {/* Heading with dynamic cityName change*/}
-            <div id="Header" className="flex justify-between">
+
+            <div id="Header" className="flex justify-between text-white">
                 <div className="flex justify-start items-center px-10">
                     <p style={{ margin: "1rem 0 0 0 " }}>
                         <span class="material-symbols-outlined pr-3">
                             cyclone
                         </span>
-                        <span className="font-Kanit text-4xl font-semibold">
+                        <span className="font-Kanit text-3xl font-semibold">
                             Weather App
                         </span>
                     </p>
@@ -79,18 +80,18 @@ export const Weather2 = () => {
                         <span class="material-symbols-outlined flex justify-start px-5">
                             thermometer
                         </span>
-                        <button className="btn btn-square rounded-none border-black" onClick={() => setTempDegree("F")}> &deg;F</button>
-                        <button className="btn btn-square rounded-none border-black" onClick={() => setTempDegree("C")}> &deg;C</button>
+                        <button className="btn btn-outline rounded-none text-white" onClick={() => setTempDegree("F")}> &deg;F</button>
+                        <button className="btn btn-outline rounded-none text-white" onClick={() => setTempDegree("C")}> &deg;C</button>
                         <span class="material-symbols-outlined flex justify-start px-5">
                             water_drop
                         </span>
-                        <button className="btn btn-square rounded-none border-black" onClick={() => setMetric("IN")}> in</button>
-                        <button className="btn btn-square rounded-none border-black" onClick={() => setMetric("MM")}> mm</button>
+                        <button className="btn btn-outline rounded-none text-white" onClick={() => setMetric("IN")}> in</button>
+                        <button className="btn btn-outline rounded-none text-white" onClick={() => setMetric("MM")}> mm</button>
                     </div>
                 </div>
             </div>
 
-            <div className="flex justify-center items-center px-10">
+            <div className="flex justify-center items-center px-10 text-white">
                 <p style={{ margin: "4rem 0 0 0 " }}>
                     <div>
                         <span className="font-Kanit text-4xl font-semibold">
@@ -106,7 +107,7 @@ export const Weather2 = () => {
             </div>
 
             {/*Input box for cityName */}
-            <div className="flex justify-center px-10 py-4">
+            <div className="flex justify-center px-10 py-4 text-white">
                 <Input
                     placeholder="Enter City"
                     className="w-full"
@@ -118,7 +119,7 @@ export const Weather2 = () => {
 
             {error && <ErrorMessage />}
 
-            <div className="flex justify-center items-center my-10">
+            <div className="flex justify-center items-center my-10 text-white">
                 {loader ? (<Loader />) : (
                     <div className="flex justify-between text-center font-Kanit">
 
@@ -179,12 +180,14 @@ export const Weather2 = () => {
                                 )}{""}
                             </div>
                         </div>
+                    </div>)
+                }
+            </div>
 
-                    </div>)}
+            <div className="flex justify-center items-center my-5 px-5">
+                <button className='btn btn-outline rounded-none border-white text-white font-Montserrat' onClick={getCurrWeatherHandler}>Enter</button>
             </div>
-            <div className="flex justify-center items-center my-5">
-                <Button className='btn btn-dark btn-outline rounded-none' buttonname="Enter" onClick={getCurrWeatherHandler} />
-            </div>
+            <Credits />
         </>
     )
 }

@@ -4,9 +4,10 @@ module.exports = {
   theme: {
     extend: {},
     fontFamily: {
-      'Gaseok' : ['Gasoek One'],
+      'Gaseok': ['Gasoek One'],
       'Kanit': ['Kanit'],
-      'Geologica': ['Geologica']
+      'Geologica': ['Geologica'],
+      'Montserrat': ['Montserrat']
     }
   },
   plugins: [require("daisyui")],

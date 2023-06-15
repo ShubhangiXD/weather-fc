@@ -3,10 +3,10 @@ const Input = (props) => {
     return (
         <div>
             <div className={className}>
-                <label className="label">
-                    <span className="label-text font-Kanit text-lg">{props.label}</span>
+                <label className="label" >
+                    <span className="label-text font-Kanit text-lg text-white">{props.label}</span>
                 </label>
-                <input {...props} className="input border-black rounded-none"
+                <input {...props} className="input text-black border-black rounded-none"
                 />
             </div>
         </div>
