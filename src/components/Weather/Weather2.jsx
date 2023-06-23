@@ -5,11 +5,9 @@ import Input from '../../shared/Input';
 import { Loader } from '../Loader/Loader';
 import { ErrorMessage } from '../../shared/ErrorMessage';
 import { Credits } from '../../shared/Credits';
+import { Header } from '../../shared/Header';
 
 export const Weather2 = () => {
-
-    /* const [Region, setRegion] = useState(""); */
-    /* const [Country, setCountry] = useState(""); */
     const [Time, setTime] = useState("");
     const [cityName, setCityName] = useState("");
     const [weather, setWeather] = useState("");
@@ -19,6 +17,7 @@ export const Weather2 = () => {
 
     const [checkTempDegree, setTempDegree] = useState("C");
     const [checkPrecipMetric, setMetric] = useState("IN");
+
 
     const [weatherDetails, setWeatherDetails] = useState({
         current: {
@@ -31,10 +30,9 @@ export const Weather2 = () => {
         const weatherDetails = await getWeatherDetails(cityName);
         const weatherData = (await weatherDetails.data) || [];
 
+
         console.log(weatherData?.location)
 
-        /* setRegion(weatherData?.location?.region) */
-        /* setCountry(weatherData?.location?.country) */
         const customTime = moment.unix(weatherData?.location?.localtime_epoch).format('h:mm:ss A');
         setTime(customTime);
 
@@ -64,16 +62,7 @@ export const Weather2 = () => {
             {/* Heading with dynamic cityName change*/}
 
             <div id="Header" className="flex justify-between text-white">
-                <div className="flex justify-start items-center px-10">
-                    <p style={{ margin: "1rem 0 0 0 " }}>
-                        <span class="material-symbols-outlined pr-3">
-                            cyclone
-                        </span>
-                        <span className="font-Kanit text-3xl font-semibold">
-                            Weather App
-                        </span>
-                    </p>
-                </div>
+                <Header />
 
                 <div className="flex justify-end">
                     <div className="flex justify-end items-center px-4 py-4 pr-8">
